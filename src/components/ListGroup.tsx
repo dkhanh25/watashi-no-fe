@@ -1,14 +1,31 @@
-function ListGroup() {
-  const items = ["First item", "Second item", "Third item"];
+import { useState } from "react";
+
+interface Props {
+  items: string[];
+  heading: string;
+  onSelectedItem: (item: string) => void;
+}
+
+export default function ListGroup({ items, heading, onSelectedItem }: Props) {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
     <>
-      <h1 className="text-3xl font-bold underline"> List</h1>
+      <h1 className={"text-3xl font-bold underline "}> {heading}</h1>
+
       {items.length === 0 && <h1>No item found</h1>}
-      {items.map((item) => (
+
+      {items.map((item, index) => (
         <h1
           key={item}
-          className="text-3xl font-bold underline"
-          onClick={() => console.log("Clicked " + item.toString())}
+          className={
+            selectedIndex === index
+              ? "text-3xl font-bold underline"
+              : "text-3xl"
+          }
+          onClick={() => {
+            setSelectedIndex(index);
+            onSelectedItem(item);
+          }}
         >
           {item}
         </h1>
@@ -16,5 +33,3 @@ function ListGroup() {
     </>
   );
 }
-
-export default ListGroup;
