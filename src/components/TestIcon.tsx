@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function TestIcon() {
+export default function TestIcon({ children }) {
   const [liked, setLiked] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ export default function TestIcon() {
           setLiked(!liked);
         }}
       >
-        Button
+        {children}
       </button>
     </>
   );

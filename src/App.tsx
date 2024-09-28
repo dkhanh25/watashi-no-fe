@@ -14,7 +14,7 @@ function App() {
         heading={headings}
         onSelectedItem={handleCLick}
       />
-      <TestIcon></TestIcon>
+      <TestIcon> Phú ngu như heo, đúng thì màu đỏ</TestIcon>
     </div>
   );
 }
